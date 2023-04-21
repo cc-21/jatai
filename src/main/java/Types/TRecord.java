@@ -1,5 +1,7 @@
 package Types;
 
+import Exceptions.IllegalDeclarationError;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -10,6 +12,9 @@ public class TRecord implements Type {
     HashMap<String, Type> recordTypes;
 
     public TRecord(HashMap<String, Type> types) {
+        types.forEach((k,v) -> {
+            if(k == null || v == null) throw new IllegalDeclarationError("Null name or null type detected in the declaration of record types.");
+        });
         recordTypes = new HashMap<>(types);
     }
 

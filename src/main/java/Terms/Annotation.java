@@ -1,6 +1,6 @@
 package Terms;
 
-import TypeChecker.Jatai;
+import TypeChecker.Context;
 import Types.Type;
 
 public class Annotation implements Term {
@@ -22,17 +22,19 @@ public class Annotation implements Term {
     }
 
     @Override
-    public Type inferType(Jatai checker) {
-        return checker.inferAnnotationType(this);
-    }
-
-    @Override
-    public boolean checkType(Jatai checker, Type t) {
-        return checker.checkAnnotationType(t, this);
-    }
-
-    @Override
     public String toString() {
-        return String.format("%s : %s", term, type);
+        return String.format("(%s) : (%s)", term, type);
+    }
+
+    /**
+     * Γ ⊢ t ⇐ τ
+     * <p>
+     * -------------
+     * </p>
+     * Γ ⊢ t : τ ⇒ τ
+     */
+    @Override
+    public Type inferType(Context aContext) {
+        return term.checkType(type, aContext) ? type : null;
     }
 }
