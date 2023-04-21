@@ -3,14 +3,17 @@ import Terms.Record;
 import Terms.*;
 import TypeChecker.Jatai;
 import Types.*;
+import org.junit.Test;
 
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
-public class Client {
+public class SampleTest {
 
-    public static void basicTypeExample(){
+    @Test
+    public void basicTypeExample(){
         Jatai typeSystem = new Jatai();
 
         Int int1 = new Int(1);
@@ -26,7 +29,8 @@ public class Client {
         assertTrue(typeSystem.checkType(empty1, new TUnit()));
     }
 
-    public static void abstractionExample() {
+    @Test
+    public void abstractionExample() {
         Jatai typeSystem = new Jatai();
 
         // λ x.x
@@ -47,7 +51,8 @@ public class Client {
         assertTrue(typeSystem.checkType(app2, new TInt()));
     }
 
-    public static void annotationExample() {
+    @Test
+    public void annotationExample() {
         Jatai typeSystem = new Jatai();
 
         // if true then 1 else 2
@@ -60,7 +65,9 @@ public class Client {
         System.out.println(String.format("Term: %s \t Type: %s", condAnn1, typeSystem.inferType(condAnn1)));
     }
 
-    public static void letExample() {
+
+    @Test
+    public void letExample() {
         Jatai typeSystem = new Jatai();
 
         Variable z = new Variable("z");
@@ -84,7 +91,8 @@ public class Client {
         System.out.println(String.format("Term: %s \t Type: %s", letAnn1, typeSystem.inferType(letAnn1)));
     }
 
-    public static void recordExample() {
+    @Test
+    public void recordExample() {
         Jatai typeSystem = new Jatai();
 
         // int
@@ -134,7 +142,8 @@ public class Client {
         assertTrue(superType1.hasSubtype(superType2) && superType2.hasSubtype(recordInferredType) && superType1.hasSubtype(recordInferredType));
     }
 
-    public static void abstractionSubtypingExample(){
+    @Test
+    public void abstractionSubtypingExample(){
         Jatai typeSystem = new Jatai();
 
         Bool bool1 = new Bool(false);
@@ -143,21 +152,21 @@ public class Client {
         HashMap<String, Term> re1map = new HashMap<>();
         re1map.put("l1", bool1);
         re1map.put("l2", abs1);
-        Record re1 = new Record(re1map);
+        Terms.Record re1 = new Terms.Record(re1map);
 
         HashMap<String, Term> re2map = new HashMap<>();
         re2map.put("l1", new Int(999));
         re2map.put("l2", new Int(892));
-        Record re2 = new Record(re2map);
+        Terms.Record re2 = new Terms.Record(re2map);
 
         HashMap<String, Term> re3map = new HashMap<>();
         re3map.put("l2", abs1);
         re3map.put("l1", bool1);
         re3map.put("l3", new Int(2));
-        Record re3 = new Record(re3map);
+        Terms.Record re3 = new Terms.Record(re3map);
 
         HashMap<String, Term> re4map = new HashMap<>();
-        Record re4 = new Record(re4map);
+        Terms.Record re4 = new Record(re4map);
 
         Type re1Type = typeSystem.inferType(re1);
         Type re2Type = typeSystem.inferType(re2);
@@ -177,14 +186,5 @@ public class Client {
         System.out.println(String.format("Term: %s \t Type: %s", lam2, result2));
         // λre3.re4 <: λre1.re2
         assertTrue(result1.hasSubtype(result2));
-    }
-
-    public static void main(String[] args) {
-        //basicTypeExample();
-        //abstractionExample();
-        //annotationExample();
-        //letExample();
-        //recordExample();
-        abstractionSubtypingExample();
     }
 }
