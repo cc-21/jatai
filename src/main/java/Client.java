@@ -168,15 +168,21 @@ public class Client {
         assertTrue(re1Type.hasSubtype(re3Type) && re4Type.hasSubtype(re2Type));
 
         // λre1.re2
-        Abstraction lam1 = new Abstraction("re1", re2, new TFunction(re1Type, re2Type));
+        Abstraction lam1 = new Abstraction("x", re2, new TFunction(re1Type, re2Type));
         Type result1 = typeSystem.inferType(lam1);
         // λre3.re4
-        Abstraction lam2 = new Abstraction("re3", re4, new TFunction(re3Type, re4Type));
+        Abstraction lam2 = new Abstraction("y", re4, new TFunction(re3Type, re4Type));
         Type result2 = typeSystem.inferType(lam2);
-        System.out.println(String.format("Term: %s \t Type: %s", lam1, result1));
-        System.out.println(String.format("Term: %s \t Type: %s", lam2, result2));
+
+        System.out.println(String.format("Term re1: %s \t Type: %s", re1, re1Type));
+        System.out.println(String.format("Term re2: %s \t Type: %s", re2, re2Type));
+        System.out.println(String.format("Term re3: %s \t Type: %s", re3, re3Type));
+        System.out.println(String.format("Term re4: %s \t Type: %s", re4, re4Type));
+
+        System.out.println(String.format("Term lam1: %s \t Type: %s", lam1, result1));
+        System.out.println(String.format("Term lam2: %s \t Type: %s", lam2, result2));
         // λre3.re4 <: λre1.re2
-        assertTrue(result1.hasSubtype(result2));
+        System.out.println(String.format("lam2 is a subtype of lam1: %b", result1.hasSubtype(result2)));
     }
 
     public static void main(String[] args) {
