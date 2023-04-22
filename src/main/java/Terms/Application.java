@@ -13,14 +13,6 @@ public class Application implements Term {
         this.t2 = aT2;
     }
 
-    public Term getTerm1() {
-        return t1;
-    }
-
-    public Term getTerm2() {
-        return t2;
-    }
-
     @Override
     public String toString() {
         return String.format("( %s ) ( %s )", t1, t2);

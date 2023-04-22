@@ -19,14 +19,15 @@ mvn test -Dtest=SampleTest
 ```
 
 A success run of tests looks like:
-![screenshot](src/sample.png)
+![screenshot](sample.png)
 
 Notice that if the above does not work, you can still run the tests in a Java main method in the `src/main/java/Client.java` file.
 
 ## Reference
-[1] David Raymond Christiansen. 2013. Bidirectional typing rules: A tutorial. (2013).
+[1] Adam Chlipala, Leaf Petersen, and Robert Harper. 2005. Strict bidirectional type checking. In Proceedings of the 2005
+ACM SIGPLAN international workshop on Types in languages design and implementation. 71–78.
 
-[2] Jana Dunfield and Neel Krishnaswami. 2021. Bidirectional Typing. ACM Computing Surveys (CSUR) 54, 5 (2021), 1–38.
+[2] David Raymond Christiansen. 2013. Bidirectional typing rules: A tutorial. (2013).
 
 [3] Benjamin C Pierce. 2002. Types and Programming Languages. MIT press.
 

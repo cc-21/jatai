@@ -15,8 +15,9 @@ public class Record implements Term {
     HashMap<String, Term> records;
 
     public Record(HashMap<String, Term> records) {
-        records.forEach((k,v) -> {
-            if(k == null || v == null) throw new IllegalDeclarationError("Null name or null term detected in the declaration of Record.");
+        records.forEach((k, v) -> {
+            if (k == null || v == null)
+                throw new IllegalDeclarationError("Null name or null term detected in the declaration of Record.");
         });
         this.records = new HashMap<>(records);
     }
@@ -31,7 +32,6 @@ public class Record implements Term {
     }
 
     /**
-     * <todo>verify</todo>
      * Γ ⊢ t1 ⇒ T1 ... Γ ⊢ tn ⇒ Tn
      * <p>
      * -------------------------------------
@@ -50,7 +50,6 @@ public class Record implements Term {
     }
 
     /**
-     * <todo>verify</todo>
      * Γ ⊢ t1 ⇐ T1 ... Γ ⊢ tm ⇐ Tm  and m<= n
      * <p>
      * -------------------------------------
@@ -63,9 +62,9 @@ public class Record implements Term {
             TRecord rType = (TRecord) aType;
             HashMap<String, Type> recordTypes = rType.getRecordTypes();
             if (recordTypes.size() > records.size()) return false;
-            for (String k: recordTypes.keySet()) {
+            for (String k : recordTypes.keySet()) {
                 Term term = records.get(k);
-                if(term == null){
+                if (term == null) {
                     return false;
                 } else {
                     if (!term.checkType(recordTypes.get(k), aContext)) return false;

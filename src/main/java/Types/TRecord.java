@@ -5,15 +5,17 @@ import Exceptions.IllegalDeclarationError;
 import java.util.HashMap;
 import java.util.Set;
 
-// record type cannot have duplicate labels
-
+/**
+ * record type cannot have duplicate labels
+ */
 public class TRecord implements Type {
 
     HashMap<String, Type> recordTypes;
 
     public TRecord(HashMap<String, Type> types) {
-        types.forEach((k,v) -> {
-            if(k == null || v == null) throw new IllegalDeclarationError("Null name or null type detected in the declaration of record types.");
+        types.forEach((k, v) -> {
+            if (k == null || v == null)
+                throw new IllegalDeclarationError("Null name or null type detected in the declaration of record types.");
         });
         recordTypes = new HashMap<>(types);
     }

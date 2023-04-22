@@ -5,6 +5,7 @@ import Types.Type;
 
 public interface Term {
     Type inferType(Context aContext);
+
     /**
      * Γ ⊢ t ⇒ τ
      * <p>

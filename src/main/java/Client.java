@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class Client {
 
-    public static void basicTypeExample(){
+    public static void basicTypeExample() {
         Jatai typeSystem = new Jatai();
 
         Int int1 = new Int(1);
@@ -134,7 +134,7 @@ public class Client {
         assertTrue(superType1.hasSubtype(superType2) && superType2.hasSubtype(recordInferredType) && superType1.hasSubtype(recordInferredType));
     }
 
-    public static void abstractionSubtypingExample(){
+    public static void abstractionSubtypingExample() {
         Jatai typeSystem = new Jatai();
 
         Bool bool1 = new Bool(false);

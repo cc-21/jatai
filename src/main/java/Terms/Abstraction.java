@@ -22,25 +22,12 @@ public class Abstraction implements Term {
         type = aType;
     }
 
-    public String getArg() {
-        return arg;
-    }
-
-    public Term getExpression() {
-        return expression;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
     @Override
     public String toString() {
         return String.format("λ (%s) . (%s)", arg, expression);
     }
 
     /**
-     * <todo>verify</todo>
      * No inference rule, delegate the call to checkType if an annotation is present. Otherwise, throw a type error.
      */
     @Override

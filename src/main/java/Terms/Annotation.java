@@ -13,14 +13,6 @@ public class Annotation implements Term {
         this.type = aType;
     }
 
-    public Term getTerm() {
-        return term;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
     @Override
     public String toString() {
         return String.format("(%s) : (%s)", term, type);

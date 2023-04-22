@@ -8,24 +8,11 @@ public class Let implements Term {
     String name;
     Term assignment;
     Term expression;
-    Type expressionType;
 
     public Let(String aName, Term aAssignment, Term aExpression) {
         this.name = aName;
         this.assignment = aAssignment;
         this.expression = aExpression;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Term getAssignment() {
-        return assignment;
-    }
-
-    public Term getExpression() {
-        return expression;
     }
 
     @Override
@@ -34,8 +21,7 @@ public class Let implements Term {
     }
 
     /**
-     * <todo>verify</todo>
-     * No inference rule, delegate the call to checkType if an annotation is present. Otherwise, throw a type error.
+     * No inference rule, throw a type error.
      */
     @Override
     public Type inferType(Context aContext) {

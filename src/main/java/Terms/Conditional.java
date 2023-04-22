@@ -5,7 +5,7 @@ import TypeChecker.Context;
 import Types.TBool;
 import Types.Type;
 
-public class Conditional implements Term{
+public class Conditional implements Term {
     Term t1;
     Term t2;
     Term t3;
@@ -21,9 +21,8 @@ public class Conditional implements Term{
         return String.format("if %s then %s else %s", t1, t2, t3);
     }
 
-
     /**
-     * <todo>verify</todo>
+     * No inference rule, throw a type error.
      */
     @Override
     public Type inferType(Context aContext) {
