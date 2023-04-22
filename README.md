@@ -19,7 +19,7 @@ mvn test -Dtest=SampleTest
 ```
 
 A success run of tests looks like:
-![Screenshot 2023-04-21 at 7.29.50 PM.png](..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Ftd%2Ffj71m1nn25127bqw_z8fx70w0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_I3unwF%2FScreenshot%202023-04-21%20at%207.29.50%20PM.png)
+![screenshot](src/sample.png)
 
 Notice that if the above does not work, you can still run the tests in a Java main method in the `src/main/java/Client.java` file.
 
